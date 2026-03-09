@@ -1,0 +1,11 @@
+{
+  "builds": [
+    { "src": "api/index.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
+    { "src": "/(.*)", "dest": "api/index.py" }
+  ],
+  "installCommand": "pip install -r api/requirements.txt",
+  "buildCommand": "python manage.py collectstatic --noinput"
+}
