@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+try:
+    import dj_database_url
+except Exception:
+    dj_database_url = None
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r+3-^8v)!$fi@hmbc79om8(*$u*e3e7f+y64p1(w)vtv_a@%+@'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-r+3-^8v)!$fi@hmbc79om8(*$u*e3e7f+y64p1(w)vtv_a@%+@')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '.vercel.app']
+_hosts = os.environ.get('DJANGO_ALLOWED_HOSTS')
+ALLOWED_HOSTS = _hosts.split(',') if _hosts else ['0.0.0.0', 'localhost', '127.0.0.1', '.vercel.app']
 
 
 # Application definition
@@ -81,6 +87,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+_db_url = os.environ.get('DATABASE_URL')
+if dj_database_url and _db_url:
+    DATABASES['default'] = dj_database_url.parse(_db_url)
 
 
 # Password validation
@@ -121,6 +130,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+_csrf = os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS')
+CSRF_TRUSTED_ORIGINS = _csrf.split(',') if _csrf else ['https://*.vercel.app']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
