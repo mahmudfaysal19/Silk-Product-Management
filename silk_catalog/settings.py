@@ -12,10 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-try:
-    import dj_database_url
-except Exception:
-    dj_database_url = None
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,7 +84,9 @@ DATABASES = {
     }
 }
 _db_url = os.environ.get('DATABASE_URL')
-if dj_database_url and _db_url:
+if _db_url:
+    import importlib
+    dj_database_url = importlib.import_module('dj_database_url')
     DATABASES['default'] = dj_database_url.parse(_db_url)
 
 
@@ -134,6 +132,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 _csrf = os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS')
 CSRF_TRUSTED_ORIGINS = _csrf.split(',') if _csrf else ['https://*.vercel.app']
 
+DEMO_MODE = os.environ.get('DEMO_MODE', 'True').lower() == 'true'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
