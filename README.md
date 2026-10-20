@@ -66,7 +66,7 @@ npm run dev
 
 ## 4. Run Frontend
 
-# In a new terminal
+#In a new terminal
 cd client
 npm install
 npm start
