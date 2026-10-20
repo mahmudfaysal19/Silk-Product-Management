@@ -54,22 +54,15 @@ git clone [https://github.com/mahmudfaysal19/Silk-Product-Management.git](https:
 cd Silk-Product-Management
 ```
 
-### 2. Configure environment
-Create a `.env` file inside the `server/` directory:
-```env
-PORT=5000
-DATABASE_URL="mongodb://localhost:27017/silk_management"
-JWT_SECRET="jwt_key_987654321_silkflow"
-```
 
-### 3. Run the backend
+### 2. Run the backend
 ```bash
 cd server
 npm install
 npm run dev
 ```
 
-### 4. Run the frontend
+### 3. Run the frontend
 Open a new terminal:
 ```bash
 cd client
@@ -79,6 +72,3 @@ npm start
 
 ---
 
-## License
-
-This project is licensed under the MIT License.
