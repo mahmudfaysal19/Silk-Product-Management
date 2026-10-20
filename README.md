@@ -44,35 +44,41 @@ Silk-Product-Management/
 └── README.md
 ```
 
-### Quickstart
+---
 
-## 1. Clone the repository
+## Quickstart
 
+### 1. Clone the repository
+```bash
 git clone [https://github.com/mahmudfaysal19/Silk-Product-Management.git](https://github.com/mahmudfaysal19/Silk-Product-Management.git)
 cd Silk-Product-Management
+```
 
-## 2. Configure Environment
-Create a .env file inside the server/ folder:
-
+### 2. Configure environment
+Create a `.env` file inside the `server/` directory:
+```env
 PORT=5000
 DATABASE_URL="your_mongodb_connection_string"
 JWT_SECRET="your_secret_key"
+```
 
-## 3. Run Backend
-
+### 3. Run the backend
+```bash
 cd server
 npm install
 npm run dev
+```
 
-## 4. Run Frontend
-
-#In a new terminal
-
+### 4. Run the frontend
+Open a new terminal:
+```bash
 cd client
 npm install
 npm start
+```
 
-The application will launch at http://localhost:3000.
+---
 
 ## License
+
 This project is licensed under the MIT License.
