@@ -58,8 +58,8 @@ cd Silk-Product-Management
 Create a `.env` file inside the `server/` directory:
 ```env
 PORT=5000
-DATABASE_URL="your_mongodb_connection_string"
-JWT_SECRET="your_secret_key"
+DATABASE_URL="mongodb://localhost:27017/silk_management"
+JWT_SECRET="jwt_key_987654321_silkflow"
 ```
 
 ### 3. Run the backend
