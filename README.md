@@ -26,10 +26,9 @@ Unlike standard retail platforms, the **Silk Product Management System** is buil
 
 | Domain | Technologies |
 | :--- | :--- |
-| **Frontend** | React.js, Tailwind CSS, Axios |
-| **Backend** | Node.js, Express.js, REST APIs |
-| **Database** | MongoDB, Prisma ORM |
-| **Tooling** | Git, Postman, Visual Studio Code |
+| **Frontend UI** | JavaScript (Vanilla), HTML, CSS |
+| **Backend & Logic** | Python |
+| **Automation** | PowerShell, Shell Scripts |
 
 ---
 
